@@ -1,0 +1,14 @@
+
+# Select all employee's name and bonus whose bonus is < 1000.
+
+SELECT name, bonus
+FROM Employee AS e
+  LEFT JOIN Bonus AS b
+  ON e.empID = b.empID
+WHERE bonus IS NULL or bonus < 1000;
+
+
+# note1. Should use Left JOIN
+# The bonus value for 'Brad' and 'John' is empty, which is actually NULL in the database.
+"Conceptually, NULL means “a missing unknown value” and it is treated somewhat differently 
+from other values." we have to use IS NULL or IS NOT NULL to compare a value with NULL.
