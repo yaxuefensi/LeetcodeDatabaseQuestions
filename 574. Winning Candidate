@@ -1,0 +1,14 @@
+SELECT name AS 'Name'
+FROM Candidate 
+JOIN
+(SELECT CandidateID
+ FROM Vote
+ GROUP BY CandidateID
+ ORDER BY COUNT(*) DESC
+ LIMIT 1) AS winner
+ON Candidate.id = winner.CandidateID;
+
+
+# 1. use ORDER BY then LIMIT 1 to get the largest one.
+# 2. the aliase name should be more meaningful.
+
