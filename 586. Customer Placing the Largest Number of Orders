@@ -1,0 +1,9 @@
+SELECT customer_number
+FROM orders
+GROUP BY customer_number
+ORDER BY COUNT(order_number) DESC
+LIMIT 1;
+
+# LIMIT It can be used with only one argument, 
+which specifies the number of rows to return from the beginning of the 
+result set. So LIMIT 1 will return the first record.
