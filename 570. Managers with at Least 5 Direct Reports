@@ -1,0 +1,33 @@
+# my first attemp
+SELECT MgrName AS Name
+FROM(
+SELECT e1.ID AS EmpID, e1.Name AS EmpName, e2.Name AS MgrName
+FROM Employee AS e1
+  JOIN Employee AS e2
+  ON e1.ManagerID = e2.ID) AS e
+ GROUP BY MgrName
+ HAVING COUNT(EmpID) > 4;
+ 
+ # my second attempt after reading the solution
+ 
+ SELECT Name
+ FROM Employee AS e1
+ JOIN
+ (SELECT ManagerID 
+ FROM Employee
+ GROUP BY ManagerID
+ HAVING COUNT(Id) > 4) AS e2
+ ON e1.Id = e2.ManagerID;
+ 
+ #1. the second try is much more consice
+ #2. better understanding of  GROUP BY
+ #3.  Keep in mind   
+ SELECT * 
+ FROM  table 1
+ JOIN  table2
+ ON xx = xx
+ WHERE  XX
+ GROUP BY XX
+ HAVING XX
+ ORDER BY  XXX
+ 
