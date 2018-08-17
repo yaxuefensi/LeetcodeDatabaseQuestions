@@ -1,0 +1,6 @@
+SELECT name
+FROM customers
+WHERE referee_id IS NULL or referee_id <> 2;
+
+# if there is NULL in the variable, I must use IS NULL or IS NOT NULL to compare
+#  id is a number, so just use <> 2 or !=2.
