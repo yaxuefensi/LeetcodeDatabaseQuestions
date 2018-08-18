@@ -1,0 +1,8 @@
+
+SELECT min(abs(p1.x-p2.x)) AS shortest
+FROM point AS p1
+ JOIN point AS p2
+ ON p1.x != p2.x;
+ 
+ 
+ #note:  pay attention to the conditon of the join. 
