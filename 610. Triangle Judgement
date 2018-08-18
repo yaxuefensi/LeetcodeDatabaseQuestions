@@ -1,0 +1,16 @@
+SELECT x, y, z, 
+       CASE 
+         WHEN x+y> z THEN 'Yes'
+         WHEN x+z> y THEN 'Yes'
+         WHEN y+z> x THEN 'Yes'
+         ELSE 'No' 
+       END AS triangle
+FROM triangle;
+       
+       
+# note
+CASE
+  WHEN... THEN
+  WHEN... THEN
+  ELSE...
+END AS xx
