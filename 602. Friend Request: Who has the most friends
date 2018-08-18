@@ -1,0 +1,37 @@
+#first attept
+SELECT id, COUNT(*)
+FROM
+(SELECT request_id AS id
+ FROM request_accepted
+ UNION ALL
+ SELECT accepter_id
+ FROM request_accepted)
+GROUP BY id
+ORDER BY COUNT(*) DESC
+LIMIT 1;
+
+
+
+#
+SELECT ids as id, cnt as num
+FROM
+(
+SELECT ids, COUNT(*) as cnt
+FROM
+(SELECT request_id AS id
+ FROM request_accepted
+ UNION ALL
+ SELECT accepter_id
+ FROM request_accepted) as tbl1
+GROUP BY ids
+) as tbl2
+ORDER BY num DESC
+LIMIT 1;
+
+
+
+#union all will keep all the records even the 'duplicated' one
+SELECT name, COUNT(*) as num
+FROM
+GROUPY BY name
+ORDER BY num DESC.  this is correct
