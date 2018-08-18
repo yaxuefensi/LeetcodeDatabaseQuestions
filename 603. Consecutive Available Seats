@@ -1,0 +1,19 @@
+
+# first attempt
+SELECT seat_id
+FROM cinema
+WHERE free = 1 AND (seat_id
+
+
+
+# after reading the solution
+SELECT DISTINCT seat_id
+FROM cinema AS a
+  JOIN cinema AS b
+  ON abs(a.seat_id - b.seat_id) = 1
+WHERE a.free = 1 and b.free=1
+ORDER BY seat_id;
+
+
+#note1: JOIN ON  XX  don't necessarily to be a=b, it can be a-b=1, abs(a-b)=1
+#note2:  abs( a)   to get the absolute value of number a
