@@ -1,0 +1,15 @@
+
+# first attept
+SELECT class
+FROM courses
+GROUP BY class
+HAVING COUNT(student) > 4;
+
+# second attemp
+SELECT class
+FROM courses
+GROUP BY class
+HAVING COUNT(DISTINCT student) > 4;
+
+#  use DISTINCT since the student name may be duplicated in a class
+#  COUNT(DISTINCT  XX)  OR SUM(DISTINCT XX) OR ...  this all deletes the dupicate values.
