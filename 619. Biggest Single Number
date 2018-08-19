@@ -1,0 +1,12 @@
+SELECT MAX(num) AS num
+FROM
+(
+SELECT num
+FROM number
+GROUP BY num
+HAVING COUNT(num) =1
+) AS a;
+
+
+# note: use GROUP BY to get the numbers only show for 1 time.
+# use MAX (number) to get the maximum number.
