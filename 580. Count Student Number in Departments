@@ -1,0 +1,11 @@
+
+SELECT dept_name, COUNT(student_id) AS student_number
+FROM department 
+  LEFT JOIN student
+  ON department.dept_id = student.dept_id
+GROUP BY dept_name
+ORDER BY student_number DESC, dept_name;
+
+#note1:  COUNT(*) CANNOT be used because it will output 1 for the law department,
+# COUNT(student_id)  should be used because it will be 0 if student_id IS NULL.
+# order by can use the alias
