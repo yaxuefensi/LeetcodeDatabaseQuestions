@@ -1,0 +1,50 @@
+
+# my first attempt
+
+SELECT date_format(pay_date,'%Y-%m'), department_id,
+       CASE
+         WHEN dptavgsal > avgsal THEN 'higher'
+         WHEN dptavgsal < avgsal THEN 'lower'
+         ELSE 'same'
+        END AS comparision
+FROM
+(
+SELECT pay_date, AVG(amount) AS avgsal
+FROM salary
+GROUP BY pay_date
+) AS tab1
+INNER JOIN
+(
+SELECT pay_date, deparment_id, AVG(amount) AS dptavgsal
+FROM salary
+  JOIN employee
+  ON salary.employee_id = employee.employee_id
+GROUP BY pay_date, department_id
+) AS tab2
+  ON tab1.pay_date = tab2.pay_date
+ ;
+ 
+ # solution is:
+ 
+ select department_salary.pay_month, department_id,
+case
+  when department_avg>company_avg then 'higher'
+  when department_avg<company_avg then 'lower'
+  else 'same'
+end as comparison
+from
+(
+  select department_id, avg(amount) as department_avg, date_format(pay_date, '%Y-%m') as pay_month
+  from salary join employee on salary.employee_id = employee.employee_id
+  group by department_id, pay_month
+) as department_salary
+join
+(
+  select avg(amount) as company_avg,  date_format(pay_date, '%Y-%m') as pay_month from salary group by date_format(pay_date, '%Y-%m')
+) as company_salary
+on department_salary.pay_month = company_salary.pay_month
+;
+ 
+ 
+ # note1:  date_format(date, '%XX')
+ # I can should company_salary, dep_salary more obvious names.
