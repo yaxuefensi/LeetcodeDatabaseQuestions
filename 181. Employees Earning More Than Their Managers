@@ -1,0 +1,8 @@
+
+SELECT e1.Name AS Employee
+FROM Employee AS e1
+  INNER JOIN Employee AS e2
+  ON e1.ManagerID = e2.ID
+WHERE e1.Salary > e2.Salary;
+
+# note: inner join the same table, pay attention to the alias 
