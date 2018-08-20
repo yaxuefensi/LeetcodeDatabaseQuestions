@@ -1,0 +1,21 @@
+
+SELECT
+IFNULL(
+(SELECT DISTINCT salary
+ FROM Employee
+ ORDER BY salary DESC
+ LIMIT 1 OFFSET 1),
+ NULL) AS SecondHighestSalary
+
+
+# note
+Getting the rows with the Nth highest value
+Suppose you have to get employees whose has 2nd highest salary in the company. To do so, you use the LIMIT OFFSET clauses as follows.
+
+
+SELECT 
+    employee_id, first_name, last_name, salary
+FROM
+    employees
+ORDER BY salary DESC
+LIMIT 1 OFFSET 1;
