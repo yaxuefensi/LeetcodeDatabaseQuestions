@@ -1,0 +1,20 @@
+# first attempt
+
+SELECT DISTINCT tab1.NUM AS ConsecutiveNums
+FROM Logs AS tab1
+  JOIN Logs AS tab2
+  ON ABS(tab1.ID-ab2.ID)= 1
+WHERE tab1.NUM = tab2.NUM;
+
+#the solution is similar to mine
+
+SELECT DISTINCT tab1.NUM AS ConsecutiveNums
+FROM Logs AS tab1
+  INNER JOIN Logs AS tab2
+  ON tab1.ID = tab2.ID-1
+  INNER JOIN Logs AS tab3
+  ON tab2.ID = tab3.ID - 1
+where tab1.num = tab2.num AND tab2.num=tab3.num
+;
+
+#use  the condition tab1.ID = tab2.ID-1 to get the table I want.
