@@ -1,0 +1,14 @@
+
+# first attempt
+SELECT DISTINCT Name AS Customers
+FROM Customers
+  LEFT JOIN Orders
+  ON Customers.ID = Orders.CustomerID
+WHERE Orders.ID IS NULL;
+
+# after solution
+SELECT Name AS Customers
+FROM Customers
+WHERE Id NOT IN (
+  SELECT CustomerID
+  FROM Orders);
