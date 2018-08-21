@@ -1,0 +1,34 @@
+
+SELECT tab1.Department, Employee.Name AS Employee, tab1.MaxSal AS Salary
+FROM Employee
+  INNER JOIN
+(
+SELECT d.Name AS Department, d.Id,max(Salary) AS MaxSal
+FROM Employee AS e
+  INNER JOIN Department AS d
+  ON e.DepartmentID = d.Id
+GROUP BY d.Name, d.Id
+) AS tab1
+  ON Employee.Salary = tab1.MaxSal AND Employee.DepartmentID = tab1.Id;
+  
+  
+# solution:
+SELECT
+    Department.name AS 'Department',
+    Employee.name AS 'Employee',
+    Salary
+FROM
+    Employee
+        JOIN
+    Department ON Employee.DepartmentId = Department.Id
+WHERE
+    (Employee.DepartmentId , Salary) IN
+    (   SELECT
+            DepartmentId, MAX(Salary)
+        FROM
+            Employee
+        GROUP BY DepartmentId
+    )
+;
+
+#note1:  Value IN (),  a pair of values can also be IN. (value1, value2)  IN ()
