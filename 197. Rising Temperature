@@ -1,0 +1,18 @@
+
+# first attempt
+SELECT w1.Id
+FROM Weather AS w1
+ INNER JOIN Weather AS w2
+ ON DATEDIFF(day,w2.date,w1.date)=1
+WHERE w1.Temperature > w2.Temperature;
+
+
+#after solution
+SELECT w1.Id
+FROM Weather AS w1
+ INNER JOIN Weather AS w2
+ ON w1.RecordDate -1 = w2.RecordDate
+WHERE w1.Temperature > w2.Temperature;
+
+
+# note: DATEDIFF(day,date1, date2) = 1  (date2 is one day later than date1)
