@@ -1,0 +1,14 @@
+1.
+DATEDIFF( year/month/day, date1, date2) (date2 > date1 can get positive number).
+
+2.
+ABS(number)  -- get absolute value
+
+3.
+ROUND(value, 2)  -- get the value with 2-digit decimal
+
+4.
+MOD(n,m)  --- get the remainder of n divided by m
+
+5.
+ISNULL(value, 0) --- if value is NULL, then output 0. 
